@@ -8,8 +8,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
+@Transactional
 public class LoginService {
 	
 	@Autowired  
@@ -33,8 +36,9 @@ public class LoginService {
 	    	    });
 		  
 		  
-		  return status;
+		  return status;  
 		  
 	    }
+	  
 
 }

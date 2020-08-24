@@ -7,51 +7,48 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 
-
 @Service
 public class OTP_Service {
 
-	 private static final Integer EXPIRE_MINS = 5;
-	 private LoadingCache<String, Integer> otpCache;
+	private static final Integer EXPIRE_MINS = 5;
+	private LoadingCache<String, Integer> otpCache;
 
-	 public OTP_Service(){
+	public OTP_Service() {
 
-	 super();
+		super();
 
-	 otpCache = CacheBuilder.newBuilder().
+		otpCache = CacheBuilder.newBuilder().
 
-	     expireAfterWrite(EXPIRE_MINS, TimeUnit.MINUTES).build(new CacheLoader<String, Integer>() {
+				expireAfterWrite(EXPIRE_MINS, TimeUnit.MINUTES).build(new CacheLoader<String, Integer>() {
 
-	      public Integer load(String key) {
-	             return 0;
-	       }
+					public Integer load(String key) {
+						return 0;
+					}
 
-	   });
-
-	 }
-
-public int generateOTP(String key){
-
-	Random random = new Random();
-	int otp = 100000 + random.nextInt(900000);
-	otpCache.put(key, otp);
-	return otp;
+				});
 
 	}
 
+	public int generateOTP(String key) {
 
-public int getOtp(String key){ 
-	try{
-		return otpCache.get(key); 
+		Random random = new Random();
+		int otp = 100000 + random.nextInt(900000);
+		otpCache.put(key, otp);
+		return otp;
+
 	}
-	catch (Exception e){
-		return 0; 
+
+	public int getOtp(String key) {
+		try {
+			return otpCache.get(key);
+		} catch (Exception e) {
+			return 0;
 		}
 	}
 
-public void clearOTP(String key){ 
+	public void clearOTP(String key) {
 
-	 otpCache.invalidate(key);
+		otpCache.invalidate(key);
 
 	}
 

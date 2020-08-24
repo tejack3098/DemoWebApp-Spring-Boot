@@ -1,6 +1,5 @@
 package com.tejack.demo.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,37 +12,35 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tejack.demo.service.LoginService;
 import com.tejack.demo.service.UserDetailsService;
 
-
 @Controller
 @SessionAttributes("name")
 public class LoginController {
 
-    @Autowired
-    LoginService service;
-    
-    @Autowired
-    UserDetailsService userService;
+	@Autowired
+	LoginService service;
 
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String showLoginPage(ModelMap model){
-        return "login";
-    }
+	@Autowired
+	UserDetailsService userService;
 
-    @RequestMapping(value="/login", method = RequestMethod.POST)
-    public ModelAndView LoginUserPage(ModelAndView mv, @RequestParam String email, @RequestParam String password){
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String showLoginPage(ModelMap model) {
+		return "login";
+	}
 
-        boolean isValidUser = service.validateUser(email, password);
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView LoginUserPage(ModelAndView mv, @RequestParam String email, @RequestParam String password) {
 
-        if (!isValidUser) {
-            mv.addObject("errorMessage", "Invalid Credentials");
-            mv.setViewName("login");
-            return mv;
-        }
-        
-        
-        mv.addObject("name",userService.getDetail(email));
-        mv.setViewName("redirect:welcome");
-        return mv;
-    }
+		boolean isValidUser = service.validateUser(email, password);
+
+		if (!isValidUser) {
+			mv.addObject("errorMessage", "Invalid Credentials");
+			mv.setViewName("login");
+			return mv;
+		}
+
+		mv.addObject("name", userService.getDetail(email));
+		mv.setViewName("redirect:welcome");
+		return mv;
+	}
 
 }

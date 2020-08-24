@@ -37,8 +37,9 @@
             
             <form action="${pageContext.servletContext.contextPath}/register" method="post" class="form-signup">
 
-                <input type="text" id="user-name" name="name" class="form-control" placeholder="User Name" required autofocus>
+                <input type="text" id="user-name" name="uname" class="form-control" placeholder="User Name" required autofocus>
                 <input type="email" id="user-email" name="email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="number" id="user-age" name="age" class="form-control" placeholder="Age" required autofocus>
                 <input type="password" id="user-pass" name="password" class="form-control" placeholder="Password" required autofocus>
                 <input type="password" id="user-repeatpass" name="c_pass" class="form-control" placeholder="Repeat Password" required autofocus>
 

@@ -8,12 +8,12 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class LogoutContoller {
-	
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String LogoutUser(ModelMap model, SessionStatus status){
-		
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String LogoutUser(ModelMap model, SessionStatus status) {
+
 		status.setComplete();
-        return "redirect:login";
-    }
+		return "redirect:login";
+	}
 
 }

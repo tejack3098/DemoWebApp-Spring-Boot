@@ -17,7 +17,7 @@
     <div id="logreg-forms">
        		<font color="red" style="text-align: center">${errorMessage}</font>
             <form action="${pageContext.servletContext.contextPath}/verifyOTP" method="post">
-            	<input type="hidden" name="userEmail" value=${email}>
+            	<input type="hidden" name="email" value=${email}>
                 <input type="number" id="user_otp" name="user_otp" class="form-control" placeholder="Enter OTP" required autofocus>
                 <button class="btn btn-primary btn-block" type="submit">Verify OTP</button>
                 <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>

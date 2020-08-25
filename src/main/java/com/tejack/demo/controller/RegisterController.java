@@ -36,7 +36,7 @@ public class RegisterController {
 			return mv;
 		}
 
-		boolean chk_exists = userDetails.chk_email(user.getEmail());
+		boolean chk_exists = userDetails.chk_email(user);
 
 		if (chk_exists) {
 
